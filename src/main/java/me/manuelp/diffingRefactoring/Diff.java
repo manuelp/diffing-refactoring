@@ -15,21 +15,20 @@ public class Diff {
         "Reviews shouldn't be null!");
 
     List<Difference> changes = new ArrayList<>();
-    if (!Objects.equals(x.getTitle(), y.getTitle())) changes.add(
-        difference("Title", Utils.formatValue(x.getTitle()),
-                   Utils.formatValue(y.getTitle())));
-    if (!Objects.equals(x.getTitle(), y.getTitle())) changes.add(
-        difference("Username", Utils.formatValue(x.getUsername()),
-                   Utils.formatValue(y.getUsername())));
-    if (!Objects.equals(x.getTitle(), y.getTitle())) changes.add(
-        difference("Updated on", Utils.formatValue(x.getUpdated()),
-                   Utils.formatValue(y.getUpdated())));
-    if (!Objects.equals(x.getTitle(), y.getTitle())) changes.add(
-        difference("Rating", Utils.formatValue(x.getRating()),
-                   Utils.formatValue(y.getRating())));
-    if (!Objects.equals(x.getTitle(), y.getTitle())) changes.add(
-        difference("Text", Utils.formatValue(x.getText()),
-                   Utils.formatValue(y.getText())));
+    compareReviewField("Title", x.getTitle(), y.getTitle(), changes);
+    compareReviewField("Username", x.getUsername(), y.getUsername(), changes);
+    compareReviewField("Updated on", x.getUpdated(), y.getUpdated(), changes);
+    compareReviewField("Rating", x.getRating(), y.getRating(), changes);
+    compareReviewField("Text", x.getText(), y.getText(), changes);
     return changes;
   }
+
+  private static <T> void compareReviewField(String description, T oldValue,
+                                             T newValue,
+                                             List<Difference> changes) {
+    if (!Objects.equals(oldValue, newValue)) changes.add(
+        difference(description, Utils.formatValue(oldValue),
+                   Utils.formatValue(newValue)));
+  }
+
 }

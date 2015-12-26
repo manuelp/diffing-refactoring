@@ -9,7 +9,7 @@ public class Username {
 
   private Username(String name) {this.name = name;}
 
-  public static Username author(String name) {
+  public static Username username(String name) {
     Checks.notNull(name);
     return new Username(name);
   }
