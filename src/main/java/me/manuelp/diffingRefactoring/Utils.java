@@ -3,7 +3,8 @@ package me.manuelp.diffingRefactoring;
 import me.manuelp.diffingRefactoring.types.Username;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+
+import static java.time.format.DateTimeFormatter.ISO_DATE_TIME;
 
 public class Utils {
   public static String formatValue(Object value) {
@@ -11,7 +12,7 @@ public class Utils {
     else if (value instanceof String) return (String) value;
     else if (value instanceof Username) return ((Username) value).getName();
     else if (value instanceof LocalDateTime)
-      return ((LocalDateTime) value).format(DateTimeFormatter.ISO_DATE_TIME);
+      return ((LocalDateTime) value).format(ISO_DATE_TIME);
     else return value.toString();
   }
 }

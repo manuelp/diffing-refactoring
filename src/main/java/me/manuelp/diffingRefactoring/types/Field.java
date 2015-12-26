@@ -1,6 +1,7 @@
 package me.manuelp.diffingRefactoring.types;
 
 import me.manuelp.diffingRefactoring.Checks;
+import me.manuelp.diffingRefactoring.rendering.Renderable;
 
 import java.util.Objects;
 
@@ -14,8 +15,9 @@ public class Field<T> {
     this.newValue = newValue;
   }
 
-  public static <T> Field<T> field(String name, T oldValue, T newValue) {
-    Checks.notNull(name, oldValue, newValue);
+  public static <T extends Renderable> Field<T> field(String name, T oldValue,
+                                                      T newValue) {
+    Checks.notNull(name);
     return new Field<>(name, oldValue, newValue);
   }
 

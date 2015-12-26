@@ -1,10 +1,11 @@
 package me.manuelp.diffingRefactoring.types;
 
 import me.manuelp.diffingRefactoring.Checks;
+import me.manuelp.diffingRefactoring.rendering.Renderable;
 
 import java.util.Objects;
 
-public class Username {
+public class Username implements Renderable {
   private final String name;
 
   private Username(String name) {this.name = name;}
@@ -36,5 +37,10 @@ public class Username {
     return "Username{" +
            "name='" + name + '\'' +
            '}';
+  }
+
+  @Override
+  public String render() {
+    return getName();
   }
 }

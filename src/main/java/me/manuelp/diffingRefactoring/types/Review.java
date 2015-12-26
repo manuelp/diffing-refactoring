@@ -21,9 +21,9 @@ public class Review {
     this.text = text;
   }
 
-  public static Review book(String title, Username username,
-                            LocalDateTime added, Rating rating, String text) {
-    Checks.notNull(title, username, added, rating, text);
+  public static Review review(String title, Username username,
+                              LocalDateTime added, Rating rating, String text) {
+    Checks.notNull(username, added, rating);
     return new Review(title, username, added, rating, text);
   }
 
